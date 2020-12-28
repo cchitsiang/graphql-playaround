@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "develop": "npx directus start",
+    "start": "directus start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
