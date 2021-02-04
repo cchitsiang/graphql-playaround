@@ -1,0 +1,46 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["nativeTypes"]
+}
+
+generator typegraphql {
+  provider = "typegraphql-prisma"
+  output   = "../src/prisma/generated/"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  phoneNumber String    @unique
+  fullName    String
+  Wallet      Wallet?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  deletedAt   DateTime?
+}
+
+model Wallet {
+  id          Int           @id @default(autoincrement())
+  balance     Int
+  ownerId     Int
+  owner       User          @relation(fields: [ownerId], references: [id])
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @default(now()) @updatedAt
+  deletedAt   DateTime?
+  Transaction Transaction[]
+}
+
+model Transaction {
+  id          Int       @id @default(autoincrement())
+  description String
+  amount      Int
+  walletId    Int
+  wallet      Wallet    @relation(fields: [walletId], references: [id])
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now()) @updatedAt
+  deletedAt   DateTime?
+}
