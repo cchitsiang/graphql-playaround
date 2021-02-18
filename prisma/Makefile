@@ -1,8 +1,11 @@
 -include .env
 export
 
-introspect: 
+introspect:
 	npx prisma introspect
 
 sync:
 	npx prisma db push --preview-feature
+
+start:
+	npm run start:dev
