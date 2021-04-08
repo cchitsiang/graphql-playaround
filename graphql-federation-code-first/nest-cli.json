@@ -1,0 +1,39 @@
+{
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/graphql-gateway/src",
+  "monorepo": true,
+  "root": "apps/graphql-gateway",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/graphql-gateway/tsconfig.app.json"
+  },
+  "projects": {
+    "graphql-gateway": {
+      "type": "application",
+      "root": "apps/graphql-gateway",
+      "entryFile": "main",
+      "sourceRoot": "apps/graphql-gateway/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/graphql-gateway/tsconfig.app.json"
+      }
+    },
+    "users-service": {
+      "type": "application",
+      "root": "apps/users-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/users-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users-service/tsconfig.app.json"
+      }
+    },
+    "posts-service": {
+      "type": "application",
+      "root": "apps/posts-service",
+      "entryFile": "main",
+      "sourceRoot": "apps/posts-service/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/posts-service/tsconfig.app.json"
+      }
+    }
+  }
+}
